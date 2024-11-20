@@ -1,5 +1,5 @@
 {
-  "name": "sidebar-example",
+  "name": "resource-view-example",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -14,8 +14,7 @@
     "@schedule-x/events-service": "^2.6.0",
     "@schedule-x/react": "^2.5.0",
     "@schedule-x/theme-default": "^2.6.0",
-    "@sx-premium/drag-to-create": "^1.5.1",
-    "@sx-premium/sidebar": "^1.5.1",
+    "@sx-premium/resource-scheduler": "^1.5.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "uuid": "^11.0.3"
