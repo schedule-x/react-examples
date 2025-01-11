@@ -29,10 +29,9 @@ function App() {
       console.log(modalPlugin.formValues.value)
       modalPlugin.formValues.value = {
         ...modalPlugin.formValues.value,
-        title: '',
         region: ''
       }
-      console.log(modalPlugin.formValues.value)
+      regionInputField.value.rerender()
 
       if (value === 'USA') {
         regionInputField.value = {
