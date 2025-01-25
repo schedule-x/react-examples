@@ -1,0 +1,29 @@
+{
+  "name": "ai-assistant",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@schedule-x/event-recurrence": "^2.15.0",
+    "@schedule-x/platform-ai-assistant": "^2.7.0",
+    "@schedule-x/react": "^2.13.3",
+    "@schedule-x/theme-default": "^2.15.0",
+    "@sx-platform/ai-assistant": "^2.7.0",
+    "next": "15.1.6",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  }
+}

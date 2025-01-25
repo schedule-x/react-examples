@@ -95,7 +95,14 @@ function App() {
     plugins: [
       eventsService,
       modalPlugin,
-    ]
+    ],
+    callbacks: {
+      onDoubleClickDateTime: (date) => {
+        modalPlugin.clickToCreate(date, {
+          title: 'New event'
+        })
+      }
+    }
   })
 
   return (
