@@ -7,6 +7,7 @@ import { createDailyView, createHourlyView, createConfig } from '@sx-premium/res
 import '@schedule-x/theme-default/dist/index.css'
 import '@sx-premium/resource-scheduler/index.css'
 import {createEventsServicePlugin} from "@schedule-x/events-service";
+import 'temporal-polyfill/global'
 
 function App() {
   const eventsServicePlugin = useState(() => createEventsServicePlugin())[0];
@@ -48,19 +49,20 @@ function App() {
       {
         id: uuidv4(),
         title: 'Event 1',
-        start: '2024-05-11 04:00',
-        end: '2024-05-11 06:00',
+        start: Temporal.ZonedDateTime.from('2024-05-11T04:00:00+09:00[Asia/Tokyo]'),
+        end: Temporal.ZonedDateTime.from('2024-05-11T06:00:00+09:00[Asia/Tokyo]'),
         resourceId: '1'
       },
       {
         id: uuidv4(),
         title: 'Event 2',
-        start: '2024-05-11 01:00',
-        end: '2024-05-11 12:00',
+        start: Temporal.ZonedDateTime.from('2024-05-11T01:00:00+09:00[Asia/Tokyo]'),
+        end: Temporal.ZonedDateTime.from('2024-05-11T12:00:00+09:00[Asia/Tokyo]'),
         resourceId: '2'
       }
     ],
-    selectedDate: '2024-05-11',
+    selectedDate: Temporal.PlainDate.from('2024-05-11'),
+    timezone: 'Asia/Tokyo',
     plugins: [
       eventsServicePlugin,
     ]
