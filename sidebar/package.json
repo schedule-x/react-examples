@@ -10,12 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@schedule-x/calendar": "^3.0.0-rc.3",
-    "@schedule-x/events-service": "^3.0.0-rc.3",
-    "@schedule-x/react": "^3.0.0-rc.1",
-    "@schedule-x/theme-default": "^3.0.0-rc.3",
-    "@sx-premium/drag-to-create": "^13.0.0-rc.3",
-    "@sx-premium/sidebar": "^13.0.0-rc.3",
+    "@schedule-x/calendar": "^3.0.0",
+    "@schedule-x/events-service": "^3.0.0",
+    "@schedule-x/react": "^3.0.0",
+    "@schedule-x/theme-default": "^3.0.0",
+    "@sx-premium/drag-to-create": "^13.0.0",
+    "@sx-premium/sidebar": "^13.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "temporal-polyfill": "^0.3.0",
