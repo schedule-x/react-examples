@@ -1,16 +1,18 @@
 import {useState} from 'react'
 import './App.css'
 import {ScheduleXCalendar, useCalendarApp} from "@schedule-x/react";
-import {createEventsServicePlugin} from "@schedule-x/events-service";
+import { createEventRecurrencePlugin, createEventsServicePlugin } from '@schedule-x/event-recurrence';
 import {createViewDay, createViewMonthGrid, createViewWeek} from "@schedule-x/calendar";
+import 'temporal-polyfill/global'
 
 import '@schedule-x/theme-default/dist/index.css'
 import '@sx-premium/interactive-event-modal/index.css'
 import {calendars} from "./calendars.ts";
-import {createInputField, createInteractiveEventModal} from "@sx-premium/interactive-event-modal";
+import {createInputField, createInteractiveEventModal, rruleFields} from "@sx-premium/interactive-event-modal";
 
 function App() {
   const eventsService = useState(() => createEventsServicePlugin())[0];
+  const eventRecurrence = useState(() => createEventRecurrencePlugin())[0];
 
   const regionInputField = createInputField({
     label: 'Region',
@@ -67,6 +69,7 @@ function App() {
     },
 
     fields: {
+      ...rruleFields(),
       title: {},
       startDate: {},
       startTime: {},
@@ -86,18 +89,25 @@ function App() {
       {
         id: '1',
         title: 'Event 1',
-        start: '2024-11-18',
-        end: '2024-11-18',
+        start: Temporal.PlainDate.from('2024-11-18'),
+        end: Temporal.PlainDate.from('2024-11-18'),
       },
     ],
     calendars,
-    selectedDate: '2024-11-18',
+    selectedDate: Temporal.PlainDate.from('2024-11-18'),
     plugins: [
+      eventRecurrence,
       eventsService,
       modalPlugin,
     ],
     callbacks: {
       onDoubleClickDateTime: (date) => {
+        modalPlugin.clickToCreate(date, {
+          title: 'New event'
+        })
+      },
+
+      onDoubleClickDate: (date) => {
         modalPlugin.clickToCreate(date, {
           title: 'New event'
         })

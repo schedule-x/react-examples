@@ -5,12 +5,13 @@ import {createEventsServicePlugin} from "@schedule-x/events-service";
 import {createDragToCreatePlugin} from "@sx-premium/drag-to-create";
 import {createViewDay, createViewMonthAgenda, createViewMonthGrid, createViewWeek} from "@schedule-x/calendar";
 import { v4 as uuidv4 } from 'uuid';
-
+import 'temporal-polyfill/global'
 import '@schedule-x/theme-default/dist/index.css'
 import '@sx-premium/drag-to-create/index.css'
 import '@sx-premium/sidebar/index.css'
 import {createSidebarPlugin} from "@sx-premium/sidebar";
 import {calendars} from "./calendars.ts";
+
 
 function App() {
   const eventsServicePlugin = useState(() => createEventsServicePlugin())[0];
@@ -62,12 +63,12 @@ function App() {
       {
         id: '1',
         title: 'Event 1',
-        start: '2024-11-18',
-        end: '2024-11-18',
+        start: Temporal.PlainDate.from('2024-11-18'),
+        end: Temporal.PlainDate.from('2024-11-18'),
       },
     ],
     calendars,
-    selectedDate: '2024-11-18',
+    selectedDate: Temporal.PlainDate.from('2024-11-18'),
     plugins: [
       eventsServicePlugin,
       dragToCreatePlugin,
