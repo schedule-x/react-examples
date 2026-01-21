@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import './App.css'
 import {ScheduleXCalendar, useCalendarApp} from "@schedule-x/react";
 import { createEventRecurrencePlugin, createEventsServicePlugin } from '@schedule-x/event-recurrence';
@@ -94,13 +94,17 @@ function App() {
       },
     ],
     calendars,
-    selectedDate: Temporal.PlainDate.from('2024-11-18'),
+    selectedDate: Temporal.PlainDate.from('2025-11-24'),
     plugins: [
       eventRecurrence,
       eventsService,
       modalPlugin,
     ],
     callbacks: {
+      onEventClick: (event) => {
+        console.log('clicked event', event)
+      },
+
       onDoubleClickDateTime: (date) => {
         modalPlugin.clickToCreate(date, {
           title: 'New event'
@@ -114,6 +118,38 @@ function App() {
       }
     }
   })
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      // Last week of November 2025: November 24-30
+      const dates = [
+        '2025-11-24',
+        '2025-11-25',
+        '2025-11-26',
+        '2025-11-27',
+        '2025-11-28',
+        '2025-11-29',
+        '2025-11-30',
+      ];
+      
+      // Add 10 events spread across the last week using eventsService
+      for (let i = 0; i < 10; i++) {
+        const dateIndex = i % dates.length;
+        const eventDate = dates[dateIndex];
+        const eventNumber = i + 1;
+        
+        eventsService.add({
+          id: `auto-event-${eventNumber}`,
+          title: `Event ${eventNumber}`,
+          start: Temporal.PlainDate.from(eventDate),
+          end: Temporal.PlainDate.from(eventDate),
+        });
+        console.log('added event', eventNumber)
+      }
+    }, 3000);
+
+    return () => clearTimeout(timeoutId);
+  }, [eventsService])
 
   return (
     <div>
