@@ -16,29 +16,27 @@ function App() {
   const hourlyView = useState(() => createHourlyView(resourceViewConfig))[0]
   const dailyView = useState(() => createDailyView(resourceViewConfig))[0]
 
-  useEffect(() => {
-    resourceViewConfig.resources.value = [
-      {
-        label: 'Room 100',
-        id: '1'
+  const resources = [
+    {
+      label: 'Room 100',
+      id: '1'
+    },
+    {
+      labelHTML: '<span>Room <strong>101</strong></span>',
+      id: '2',
+      colorName: 'room-101',
+      lightColors: {
+        main: '#1c7df9',
+        container: '#d2e7ff',
+        onContainer: '#002859'
       },
-      {
-        labelHTML: '<span>Room <strong>101</strong></span>',
-        id: '2',
-        colorName: 'room-101',
-        lightColors: {
-          main: '#1c7df9',
-          container: '#d2e7ff',
-          onContainer: '#002859'
-        },
-        darkColors: {
-          main: '#c0dfff',
-          onContainer: '#dee6ff',
-          container: '#426aa2'
-        }
+      darkColors: {
+        main: '#c0dfff',
+        onContainer: '#dee6ff',
+        container: '#426aa2'
       }
-    ]
-  }, []);
+    }
+  ]
 
   const calendar = useCalendarApp({
     views: [
@@ -65,7 +63,8 @@ function App() {
     timezone: 'Asia/Tokyo',
     plugins: [
       eventsServicePlugin,
-    ]
+    ],
+    resources,
   })
 
   return (
