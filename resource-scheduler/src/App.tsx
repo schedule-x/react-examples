@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react'
+import {useState} from 'react'
 import './App.css'
 import {ScheduleXCalendar, useCalendarApp} from "@schedule-x/react";
 import { v4 as uuidv4 } from 'uuid';
@@ -8,6 +8,7 @@ import '@schedule-x/theme-default/dist/index.css'
 import '@sx-premium/resource-scheduler/index.css'
 import {createEventsServicePlugin} from "@schedule-x/events-service";
 import 'temporal-polyfill/global'
+import { ExampleShell } from './ExampleShell.tsx'
 
 function App() {
   const eventsServicePlugin = useState(() => createEventsServicePlugin())[0];
@@ -68,9 +69,9 @@ function App() {
   })
 
   return (
-    <div>
+    <ExampleShell demo="Resource scheduler">
       <ScheduleXCalendar calendarApp={calendar} />
-    </div>
+    </ExampleShell>
   )
 }
 
