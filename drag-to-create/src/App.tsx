@@ -9,11 +9,12 @@ import 'temporal-polyfill/global'
 
 import '@schedule-x/theme-default/dist/index.css'
 import '@sx-premium/drag-to-create/index.css'
+import { ExampleShell } from './ExampleShell.tsx'
 
 function App() {
   const eventsServicePlugin = useState(() => createEventsServicePlugin())[0];
 
-  let dragToCreatePlugin = useState(createDragToCreatePlugin({
+  const dragToCreatePlugin = useState(createDragToCreatePlugin({
     onAddEvent: (event) => {
       console.log(event)
       // save to your server
@@ -37,7 +38,7 @@ function App() {
   })
 
   return (
-    <div>
+    <ExampleShell demo="Drag to create">
       <div
         className={'placeholderEvent'}
         draggable={true}
@@ -61,7 +62,7 @@ function App() {
       </div>
 
       <ScheduleXCalendar calendarApp={calendar} />
-    </div>
+    </ExampleShell>
   )
 }
 

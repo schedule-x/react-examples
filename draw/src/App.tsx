@@ -6,10 +6,11 @@ import {createViewDay, createViewMonthGrid, createViewWeek} from "@schedule-x/ca
 import 'temporal-polyfill/global'
 
 import '@schedule-x/theme-default/dist/index.css'
+import { ExampleShell } from './ExampleShell.tsx'
 
 function App() {
   const drawPlugin = useState(createDrawPlugin({
-    onFinishDrawing: (_event) => {
+    onFinishDrawing: () => {
       // send event to server
     },
 
@@ -43,9 +44,9 @@ function App() {
   })
 
   return (
-    <div>
+    <ExampleShell demo="Draw events">
       <ScheduleXCalendar calendarApp={calendar} />
-    </div>
+    </ExampleShell>
   )
 }
 

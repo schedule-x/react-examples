@@ -11,12 +11,13 @@ import '@sx-premium/drag-to-create/index.css'
 import '@sx-premium/sidebar/index.css'
 import {createSidebarPlugin} from "@sx-premium/sidebar";
 import {calendars} from "./calendars.ts";
+import { ExampleShell } from './ExampleShell.tsx'
 
 
 function App() {
   const eventsServicePlugin = useState(() => createEventsServicePlugin())[0];
 
-  let dragToCreatePlugin = useState(createDragToCreatePlugin({
+  const dragToCreatePlugin = useState(createDragToCreatePlugin({
     onAddEvent: (event) => {
       console.log(event)
       // save to your server
@@ -77,7 +78,7 @@ function App() {
   })
 
   return (
-    <div>
+    <ExampleShell demo="Sidebar and drag to create">
       <div
         className={'placeholderEvent'}
         draggable={true}
@@ -101,7 +102,7 @@ function App() {
       </div>
 
       <ScheduleXCalendar calendarApp={calendar} />
-    </div>
+    </ExampleShell>
   )
 }
 

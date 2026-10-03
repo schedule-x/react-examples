@@ -9,6 +9,7 @@ import '@schedule-x/theme-default/dist/index.css'
 import '@sx-premium/interactive-event-modal/index.css'
 import {calendars} from "./calendars.ts";
 import {createInputField, createInteractiveEventModal, rruleFields} from "@sx-premium/interactive-event-modal";
+import { ExampleShell } from './ExampleShell.tsx'
 
 function App() {
   const eventsService = useState(() => createEventsServicePlugin())[0];
@@ -152,9 +153,9 @@ function App() {
   }, [eventsService])
 
   return (
-    <div>
+    <ExampleShell demo="Interactive event modal">
       <ScheduleXCalendar calendarApp={calendar} />
-    </div>
+    </ExampleShell>
   )
 }
 
